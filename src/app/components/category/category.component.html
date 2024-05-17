@@ -1,0 +1,11 @@
+<nav class="p-1 bg-black">
+  <div class="containers">
+    <ul class="list-unstyled row justify-content-start fs-5 m-0">
+      <li class="col-2" *ngFor="let category of categories">
+        <a class="text-decoration-none text-white circle" (click)="seeDatas(category._id)">
+          <span>{{category.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

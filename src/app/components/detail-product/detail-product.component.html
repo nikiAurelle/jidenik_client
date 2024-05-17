@@ -1,0 +1,39 @@
+<div class="container mt-5 mb-5" *ngIf="isloading">
+  <div class="card shadow-sm">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{ api + product[0].imageUrls }}" class="img-fluid rounded-start" alt="Product Image">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h2 class="card-title mb-4">{{ product[0].name }}</h2>
+          <p class="card-text lead fw-bold">{{ product[0].description }}</p>
+          <p class="fw-bold fs-1">{{ product[0].regular_price }} $</p>
+
+          <!-- <div *ngIf="product[0].options">
+            <div *ngFor="let opt of product[0].options">
+              <h5><strong>{{ opt.name }}</strong></h5>
+              <ul class="list-unstyled d-flex fw-bold">
+                <li *ngFor="let value of opt.values">
+                  <label>
+                    <input type="radio" name="{{opt.name}}" [value]="value.name"> {{ value.name }}
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="button" class="btn btn-dark fs-2 mr-2" (click)="addCart(product[0]._id)">
+              <i class="fas fa-shopping-cart"></i> Ajouter au panier
+            </button>
+            <!-- Modification du bouton "Favori" -->
+            <button type="button" class="btn btn-outline-danger btn-circle" (click)="addFavorite(product[0]._id)">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

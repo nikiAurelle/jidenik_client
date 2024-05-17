@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row" *ngIf="!isloading">
+      <div class="col-md-3" *ngFor="let index of forLoop; let i = index">
+          <div class="card">
+              <img id="img{{i}}" src="assets/images/loading.png" class="card-img-top" alt="...">
+              <div class="card-body fw-bold">
+                  <p class="card-text" id="name{{i}}">Chargement, veuillez patienter</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                      <!-- <p id="description{{i}}">Description</p> -->
+                      <div class="price-container">
+                          <p id="price{{i}}" class="m-2">0.00$</p>
+                      </div>
+                      <button   id="id{{i}}" class="star-icon" value="">&#9733;</button>
+                  </div>
+              </div>
+              <div class="m-3">
+                <button   id="2id{{i}}" class="btn btn-dark btn-sm">
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
+
+              </div>
+              <div class="card-footer">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+<div class="row" *ngIf="isloading">
+  <div class="fw-bold fs-4 d-flex justify-content-end mb-3" >{{message}}</div>
+  <div class="col-md-3" *ngFor="let data of datas; let i = index">
+    <div class="card mb-3">
+      <a  [routerLink]="['/detail', data._id]"><img id="img{{i}}" [src]="api + data.imageUrls" class="card-img-top" alt="..."></a>
+      <div class="card-body fw-bold">
+        <p class="card-text" id="name{{i}}"><a  [routerLink]="['/detail', data._id]" class="text-decoration-none text-black">{{data.description | formatValue}}</a></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <p id="price{{i}}" class="m-2">{{data.regular_price}} $</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button (click)="addCart(data._id)" id="2id{{i}}" class="btn btn-dark btn-sm">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+          <button (click)="addFavorite(data._id)" id="id{{i}}" class="btn btn-outline-danger btn-sm">
+            <i class="fas fa-heart"></i> Favori
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
